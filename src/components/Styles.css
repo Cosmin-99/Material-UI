@@ -52,5 +52,18 @@
     padding: 18px 0px 0px 32px;
 }
 
+.formInput {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.MuiFormControl-root{
+    width: 90%;
+    margin: 8px;
+} 
+
+
+
 
 

@@ -3,11 +3,13 @@ import {StylesProvider} from '@material-ui/core/styles';
 import './App.css';
 import { Header } from './components/Header';
 import {SideMenu } from './components/SideMenu';
-import { CssBaseline } from '@material-ui/core';
+import { CssBaseline, Paper } from '@material-ui/core';
 import {PageHeader} from './components/PageHeader';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
+import { UserForm } from './components/UserForm';
 
 function App() {
+ 
   return (
     <>
     <StylesProvider injectFirst>
@@ -16,7 +18,10 @@ function App() {
       <Header />
       <PageHeader title = "Page Title"
       subtitle = "Page Description"
-      icon = {<PeopleOutlineIcon />} />
+      icon = {<PeopleOutlineIcon fontSize ="large" />} />
+      <Paper>
+        <UserForm />
+      </Paper>
     </div>
     <CssBaseline />
     </StylesProvider>
