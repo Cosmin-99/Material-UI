@@ -52,16 +52,36 @@
     padding: 18px 0px 0px 32px;
 }
 
-.formInput {
+.container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .MuiFormControl-root{
     width: 90%;
     margin: 8px;
 } 
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+.MuiTableHead-root {
+    font-weight: 600;
+    background-color: #834bff;
+}
+
+.MuiTableBody-root {
+    font-weight: 300;
+}
+
+.MuiTableRow-root:hover {
+    background-color: gray;
+}
+
 
 
 

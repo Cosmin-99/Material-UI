@@ -46,3 +46,9 @@
 .appBar {
   background-color: #fff;
 }
+
+.form {
+  padding: 12px 12px 12px 12px;
+  margin: 16px;
+  background-color: #F8F8FF;
+}
