@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Table, TableBody, TableCell, TableFooter, TableHead, TablePagination, TableRow } from '@material-ui/core';
 import { users } from './Users';
+import {User} from './UserForm';
 import './Styles.css'
 
 export function TableUsers() {
@@ -9,13 +10,20 @@ export function TableUsers() {
     const [page, setPage] = useState(0)
     const [rowsPerPage, setRowsPerPage] = useState(pages[page])
 
-    const handleChangePage = (event: EventListener , newPage: number): void => {
+    const handleChangePage = (event:  React.MouseEvent<HTMLButtonElement> | null , newPage: number): void => {
         setPage(newPage);
     }
 
-    const handleChangeRowsPerPage = (event: any) => {
-        setRowsPerPage(parseInt(event.target.value,10))
-    }
+    const handleChangeRowsPerPage = (
+        event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+      ): void => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+      };
+
+      const dataAfterPagingAndSorting = (): User[] => {
+         return users.slice(page*rowsPerPage, (page+1)*rowsPerPage);
+      }
 
     return (<>
         <Table>
@@ -32,7 +40,7 @@ export function TableUsers() {
             </TableHead>
 
             <TableBody>
-                {users.map(user => (
+                {dataAfterPagingAndSorting().map(user => (
                     <TableRow key={user.id}>
                         <TableCell>{user.fullname}</TableCell>
                         <TableCell>{user.email}</TableCell>
@@ -46,13 +54,14 @@ export function TableUsers() {
             </TableBody>
             <TableFooter>
                 <TableRow>
-                    {/*<TablePagination
+                    <TablePagination
                         component="div"
                         page={page}
                         rowsPerPageOptions={pages}
                         rowsPerPage={rowsPerPage}
                         count={users.length}
-                    onChangePage = {handleChangePage} />*/}
+                    onChangePage = {handleChangePage}
+                    onChangeRowsPerPage = {handleChangeRowsPerPage} />
                 </TableRow>
             </TableFooter>
         </Table>
