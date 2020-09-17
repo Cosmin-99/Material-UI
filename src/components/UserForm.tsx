@@ -1,7 +1,7 @@
 import { Button, FormControl, FormControlLabel, FormLabel, Grid, InputLabel, MenuItem, Radio, RadioGroup, Select, TextField } from '@material-ui/core';
-import moment from 'moment';
-import React, { useState } from 'react';
+import React, { SetStateAction, useState } from 'react';
 import './Styles.css';
+import {users} from './Users'
 
 export interface User {
     id?: number
@@ -26,7 +26,7 @@ export const departments: Department[] = [
     { label: "HR", val: "HR" }
 ];
 
-export function UserForm(props: { user: User[]}) {
+export function UserForm(props :{ setOpen :(e: SetStateAction<boolean>) => void}) {
 
     const [data, setData] = useState<User>({
         fullname: "",
@@ -47,8 +47,6 @@ export function UserForm(props: { user: User[]}) {
     const handleOpen = (): void => {
         setOpen(true)
     }
-
-    const date = new Date();
 
     return (
         <>
@@ -127,7 +125,7 @@ export function UserForm(props: { user: User[]}) {
                         variant="contained"
                         size="large"
                         color="primary"
-                        onClick = {() => props.user.push(data)}
+                        onClick = {() => {users.push(data) ; props.setOpen(false)}}
                         >Submit</Button>
                 </div>
             </div>

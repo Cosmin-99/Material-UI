@@ -52,3 +52,15 @@
   margin: 16px;
   background-color: #F8F8FF;
 }
+
+.searchBar {
+  width: 500px;
+}
+
+.pop-up-Button {
+  text-transform: none;
+  margin: 8px;
+  position: fixed;
+  padding-right: 22px;
+  right: 20px;
+}
