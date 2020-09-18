@@ -1,8 +1,8 @@
 import React, { SetStateAction, useState } from 'react';
 import {Dialog, DialogContent, DialogTitle} from '@material-ui/core';
-import { UserForm } from './UserForm';
+import { User, UserForm } from './UserForm';
 
-export function Popup(props :{open: boolean, setOpen :(e: SetStateAction<boolean>) => void}) {
+export function Popup(props :{open: boolean, setOpen :(e: SetStateAction<boolean>) => void, data: User}) {
 
     return (
         <>
@@ -11,7 +11,7 @@ export function Popup(props :{open: boolean, setOpen :(e: SetStateAction<boolean
                    <div> Type info of the new user !!! </div>
                 </DialogTitle>
                 <DialogContent>
-                    <UserForm setOpen = {props.setOpen} />
+                    <UserForm setOpen = {props.setOpen} data = {props.data} />
                 </DialogContent>
             </Dialog>
         </>

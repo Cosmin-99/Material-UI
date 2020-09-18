@@ -26,7 +26,7 @@ export const departments: Department[] = [
     { label: "HR", val: "HR" }
 ];
 
-export function UserForm(props :{ setOpen :(e: SetStateAction<boolean>) => void}) {
+export function UserForm(props :{ setOpen :(e: SetStateAction<boolean>) => void, data: User}) {
 
     const [data, setData] = useState<User>({
         fullname: "",

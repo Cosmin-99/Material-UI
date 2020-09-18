@@ -60,7 +60,6 @@
 .pop-up-Button {
   text-transform: none;
   margin: 8px;
-  position: fixed;
   padding-right: 22px;
-  right: 20px;
+  right: -670px;
 }

@@ -3,18 +3,30 @@ import { StylesProvider } from '@material-ui/core/styles';
 import './App.css';
 import { Header } from './components/Header';
 import { SideMenu } from './components/SideMenu';
-import { Button, CssBaseline, InputBase, InputLabel, Paper, TextField, Toolbar } from '@material-ui/core';
+import { Button, CssBaseline, Paper, TextField, Toolbar } from '@material-ui/core';
 import { PageHeader } from './components/PageHeader';
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
-import { User, UserForm } from './components/UserForm';
+import {users} from '../src/components/Users';
 import { TableUsers } from './components/UsersTable'
 import SearchIcon from '@material-ui/icons/Search';
 import AddIcon from '@material-ui/icons/Add';
 import { Popup } from './components/Pop-up';
+import { EditPopup } from './components/EditPop-up';
+import { User } from './components/UserForm';
 
 function App() {
 
-  const [users, setUsers] = useState<User[]>([]);
+  const [user, setUser] = useState<User[]>(users)
+
+  const [editUser, setEditUser] = useState({
+    fullname: "",
+    email: "",
+    mobile: "",
+    city: "",
+    gender: "",
+    department: "",
+    hireDate: ""
+})
   const [open, setOpen] = useState(false)
   return (
     <>
@@ -36,19 +48,22 @@ function App() {
                   startAdornment: (<SearchIcon component={SearchIcon} />)
                 }}
               />
-
+              <div className = "button">
               <Button
                 className = "pop-up-Button"
                 variant="contained"
                 size="large"
                 color = "secondary"
                 startIcon = {<AddIcon />}
+                disableRipple
                 onClick = {() => setOpen(true)}
               >Add New</Button>
-              <Popup open = {open} setOpen = {setOpen}/>
+              </div>
+              <Popup open = {open} setOpen = {setOpen} data = {editUser}/>
+              <EditPopup openPopup = {open} setOpenPopup = {setOpen} data = {editUser} setData = {setEditUser}/>
             </Toolbar>
             {/*<UserForm user = {users}/>*/}
-            <TableUsers />
+            <TableUsers Users = {user} setUser = {setUser} setOpen = {setOpen} setEditUser = {setEditUser}/>
           </Paper>
         </div>
         <CssBaseline />
